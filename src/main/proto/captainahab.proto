@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package captainahab;
+
+option java_multiple_files = true;
+option java_package = "com.twitter.captainahab";
+option java_outer_classname = "CaptainAhab";
+
+message Request {
+
+  // whether the client wants to wait for the command to complete before receiving a response
+  bool wait = 1;
+  string command = 2;
+}
+
+message Response {
+  string result = 1;
+}
+
+service CaptainAhabService {
+    rpc applyCommand(Request) returns (Response);
+}
